@@ -1,0 +1,31 @@
+﻿@model BirimBilgiSistemi.Entity.Entity.egitimBilgileri
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<div class="card">
+
+    <div class="card-body">
+        <h3>Sil</h3>
+        <div>
+            <h4>Bunu silmek istediğinizden emin misiniz?</h4>
+            <hr />
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <div class="form-group row">
+                    <div class="col-md-2 m-t-15">
+                        <button type="submit" class="btn btn-danger btn-icon-split">Sil</button>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>

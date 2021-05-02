@@ -1,0 +1,38 @@
+﻿@using BirimBilgiSistemi.Entity.ValueObjects
+@model LoginViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    ViewBag.Title = "Login Page";
+}
+<head>
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+</head>
+<div class="row col-md-12">
+    <div class="col-md-12 d-none d-lg-block"> </div>
+    <div class="col-md-12 text-lg-center">
+        <div class="p-md-5">
+            <div id="loginform">
+                <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Hoşgeldiniz!</h1>
+                </div>
+                @using (Html.BeginForm())
+                {
+
+                    <span class="alert-danger">@Html.ValidationSummary(false)</span>
+                    <div class="user">
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.Username, new { @class = "form-control form-control-user", placeholder = "Kullanıcı Adı" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control form-control-user", placeholder = "Şifre", type = "password" })
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-user btn-block" type="submit">Giriş</button>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+        </div>
+</div>

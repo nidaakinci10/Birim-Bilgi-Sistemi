@@ -1,0 +1,192 @@
+﻿
+@{
+    ViewBag.Title = "Personel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>
+    <a href="~/Personel/Create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Ekle</a>
+</p>
+
+<div class="card shadow mb-4">
+
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Personel Bilgi Tablosu</h6>
+    </div>
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Sicil Numarası</th>
+                        <th>TC Kimlik Numarası</th>
+                        <th>Ad</th>
+                        <th>Soyad</th>
+                        <th>Telefon</th>
+                        <th>Dahili</th>
+                        <th>E-Posta</th>
+                        <th>Mesleği</th>
+                        <th>Unvanı</th>
+                        <th>Adres</th>
+                        <th>Delete</th>
+                        <th>Update</th>
+                        <th>Details</th>
+                    </tr>
+
+
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Sicil Numarası</th>
+                        <th>TC Kimlik Numarası</th>
+                        <th>Ad</th>
+                        <th>Soyad</th>
+                        <th>Telefon</th>
+                        <th>Dahili</th>
+                        <th>E-Posta</th>
+                        <th>Mesleği</th>
+                        <th>Unvanı</th>
+                        <th>Adres</th>
+                        <th>Delete</th>
+                        <th>Update</th>
+                        <th>Details</th>
+                    </tr>
+                </tfoot>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal" id="myModal" tabindex="-1">
+    <div class="modal-dialog">
+        Modal content
+        <div class="modal-content" id='myModalContent'>
+            <div class="modal-header">
+                <h4 class="modal-title">Detay</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+</div>
+<script>
+    $(function () {
+            $("body").on("click", ".det", function () {
+                debugger;
+                var $buttonClicked = $(this);
+                var id = $buttonClicked.attr('data-id');
+                var options = { "backdrop": "static", keyboard: true };
+                $.ajax({
+                    type: "GET",
+                    url: '/personel/Details',
+                    contentType: "application/json; charset=utf-8",
+                    data: { "Id": id },
+                    datatype: "json",
+                    success: function (data) {
+                        debugger;
+                        $('#myModalContent').html(data);
+                        $('#myModal').modal(options);
+                        $('#myModal').modal('show');
+
+                    },
+                    error: function () {
+                        alert("deneme");
+                    }
+                });
+            });
+
+            $("#closbtn").click(function () {
+                $('#myModal').modal('hide');
+            });
+        });
+
+    </script>
+
+@*<script>
+        $("body").on("click", ".det", function () {
+            $.ajax({
+                url: '/personel/Details',
+                data: { id: 1 },
+            }).done(function (msg) {
+                alert('test');
+                //$("#showModal").html(msg);
+                //$("#modalDetail").modal();
+            })
+        })
+    </script>*@
+
+<script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable({
+            "ajax": {
+                "url": "/personel/verisayfalama",
+                "type": "POST",
+                "datatype": "json"
+            },
+
+            "columns": [
+                { "data": "sicilNo", "name": "sicilNo", "autoWidth": true },
+                { "data": "tcKimlik", "name": "tcKimlik", "autoWidth": true },
+                { "data": "ad", "name": "ad", "autoWidth": true },
+                { "data": "soyad", "name": "soyad", "autoWidth": true },
+                { "data": "telefon", "name": "telefon", "autoWidth": true },
+                { "data": "dahili", "name": "dahili", "autoWidth": true },
+                { "data": "eposta", "name": "eposta", "autoWidth": true },
+                { "data": "meslegi", "name": "meslegi", "autoWidth": true },
+                { "data": "unvani", "name": "unvani", "autoWidth": true },
+                { "data": "adres", "name": "adres", "autoWidth": true },
+                { "data": "Delete" },
+                { "data": "Update" },
+                { "data": "Details" },
+
+            ],
+            //success: function (resp) {
+            //    $("#getCode").html(resp);
+            //    $("#getCodeModal").modal('show');
+            //},
+            "serverSide": "true",
+            "order": [0, "asc"],
+            "processing": "true",
+            "language": {
+                "processing": "Yükleniyor... Lütfen Bekleyin"
+            }
+
+        });
+    });
+</script>
+@*//$(document).ready(function () {
+        //    $.ajax({
+        //        type: "GET",
+        //        dataType: "json",
+        //        url: 'http://localhost:54057/api/apipersonel',
+        //        success: function (data) {
+        //            var datatableVariable = $('#dataTable').DataTable({
+        //                data: data.rows,
+        //                columns: [
+        //                    { 'data': 'ad' },
+        //                    { 'data': 'soyad' }]
+        //            });
+        //            //$('#dataTable tfoot th').each(function () {
+        //            //    var placeHolderTitle = $('#dataTable thead th').eq($(this).index()).text();
+        //            //    $(this).html('<input type="text" class="form-control input input-sm" placeholder="Search ' + placeHolderTitle + '" />');
+        //            //});
+        //            //datatableVariable.columns().every(function () {
+        //            //    var column = this;
+        //            //    $(this.footer()).find('input').on('keyup change', function () {
+        //            //        column.search(this.value).draw();
+        //            //    });
+        //            //});
+        //            //$('.showHide').on('click', function () {
+        //            //    var tableColumn = datatableVariable.column($(this).attr('data-columnindex'));
+        //            //    tableColumn.visible(!tableColumn.visible());
+        //            //});
+        //        }
+        //    });
+
+        //});*@

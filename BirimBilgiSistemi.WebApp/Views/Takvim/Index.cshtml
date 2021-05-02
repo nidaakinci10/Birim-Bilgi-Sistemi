@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Etkinlikler Tablosu</h6>
+    </div>
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Etkinlik Adı</th>
+                        <th>Etkinlik Açıklama</th>
+                        <th>Etkinlik Kategori</th> 
+                        <th>Etkinlik Konum</th>
+                        <th>Başlangıç Tarihi</th>
+                        <th>Bitiş Tarihi</th>
+                        <th>Katılımcılar</th>
+                        <th>Delete</th>
+                        <th>Update</th>
+                        <th>Details</th>
+
+                    </tr>
+
+
+                </thead>
+                <tfoot>
+                    
+                    <tr>
+                        <th>Etkinlik Adı</th>
+                        <th>Etkinlik Açıklama</th>
+                        <th>Etkinlik Kategori</th>
+                        <th>Etkinlik Konum</th>
+                        <th>Başlangıç Tarihi</th>
+                        <th>Bitiş Tarihi</th>
+                        <th>Katılımcılar</th>
+                        <th>Delete</th>
+                        <th>Update</th>
+                        <th>Details</th>
+
+                    </tr>
+                 
+                </tfoot>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable({
+            "ajax": {
+                "url": "/Takvim/verisayfalama",
+                "type": "POST",
+                "datatype": "json"
+            },
+
+            "columns": [
+                { "data": "etkinlikAd", "name": "etkinlikAd", "autoWidth": true },
+                { "data": "etkinlikAciklama", "name": "etkinlikAciklama", "autoWidth": true },
+                { "data": "etkinlikKategori", "name": "etkinlikKategori", "autoWidth": true },
+                { "data": "etkinlikKonum", "name": "etkinlikKonum", "autoWidth": true },
+                { "data": "baslangicTarihi", "name": "baslangicTarihi", "autoWidth": true },
+                { "data": "bitisTarihi", "name": "bitisTarihi", "autoWidth": true },
+                { "data": "katilimci", "name": "katilimci", "autoWidth": true },
+                { "data": "Delete" },
+                { "data": "Update" },
+                { "data": "Details" },
+
+            ],
+            "serverSide": "true",
+            "order": [0, "asc"],
+            "processing": "true",
+            "language": {
+                "processing": "Yükleniyor... Lütfen Bekleyin"
+            }
+
+        });
+    });
+</script>

@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<body id="page-top">
+    <p>
+        <a href="~/EgitimBilgileri/Create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Ekle</a>
+    </p>
+    <div class="card shadow mb-4">
+
+
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Personel Eğitim Bilgi Tablosu</h6>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Personel Sicil no</th>
+                            <th>Eğitim Türü</th>
+                            <th>Okul Adı</th>
+                            <th>Okul Bölüm</th>
+                            <th>Mezuniyet yılı</th>
+                            <th>Sil</th>
+                            <th>Güncelle</th>
+
+                        </tr>
+
+
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Personel Sicil no</th>
+                            <th>Eğitim Türü</th>
+                            <th>Okul Adı</th>
+                            <th>Okul Bölüm</th>
+                            <th>Mezuniyet yılı</th>
+                            <th>Sil</th>
+                            <th>Güncelle</th>
+                        </tr>
+                    </tfoot>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable({
+            "ajax": {
+                "url": "/EgitimBilgileri/verisayfalama",
+                "type": "POST",
+                "datatype": "json"
+            },
+
+            "columns": [
+                { "data": "personelId", "name": "personelId", "autoWidth": true },
+                { "data": "egitimTuru", "name": "egitimTuru", "autoWidth": true },
+                { "data": "okulAdi", "name": "okulAdi", "autoWidth": true },
+                { "data": "okulBolum", "name": "okulBolum", "autoWidth": true },
+                { "data": "mezuniyetYili", "name": "mezuniyetYili", "autoWidth": true },
+                { "data": "Delete" },
+                { "data": "Update" },
+
+            ],
+            "serverSide": "true",
+            "order": [0, "asc"],
+            "processing": "true",
+            "language": {
+                "processing": "Yükleniyor... Lütfen Bekleyin"
+            }
+
+        });
+    });
+
+
+
+
+
+
+
+    //$(document).ready(function () {
+        //    $.ajax({
+        //        type: "GET",
+        //        dataType: "json",
+        //        url: 'http://localhost:54057/api/apipersonel',
+        //        success: function (data) {
+        //            var datatableVariable = $('#dataTable').DataTable({
+        //                data: data.rows,
+        //                columns: [
+        //                    { 'data': 'ad' },
+        //                    { 'data': 'soyad' }]
+        //            });
+        //            //$('#dataTable tfoot th').each(function () {
+        //            //    var placeHolderTitle = $('#dataTable thead th').eq($(this).index()).text();
+        //            //    $(this).html('<input type="text" class="form-control input input-sm" placeholder="Search ' + placeHolderTitle + '" />');
+        //            //});
+        //            //datatableVariable.columns().every(function () {
+        //            //    var column = this;
+        //            //    $(this.footer()).find('input').on('keyup change', function () {
+        //            //        column.search(this.value).draw();
+        //            //    });
+        //            //});
+        //            //$('.showHide').on('click', function () {
+        //            //    var tableColumn = datatableVariable.column($(this).attr('data-columnindex'));
+        //            //    tableColumn.visible(!tableColumn.visible());
+        //            //});
+        //        }
+        //    });
+
+        //});
+</script>

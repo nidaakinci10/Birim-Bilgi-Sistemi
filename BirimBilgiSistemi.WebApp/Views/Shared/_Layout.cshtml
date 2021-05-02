@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" lang="tr">
+
+<head>
+
+
+    @* bundle ile js dosyalarını layouta basmaya bak önemli *@
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Birim Bilgi Sistemi - Anasayfa</title>
+
+    <link href="~/Content/icons/font-awesome/css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="~/Content/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="~/Content/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="~/Content/vendor/datatables/css/jquery.dataTables.min.css" />
+    <link href="~/Content/vendor/datatables/css/dataTables.bootstrap.min.css">
+    <link href="~/Content/vendor/datatables/css/dataTables.bootstrap4.min.css" />
+    <link href="~/Content/bootstrap/css/bootstrap-grid.css" rel="stylesheet">
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+    <link href="~/Content/fullcalendar/dist/daygrid/main.css" rel="stylesheet">
+    <link href="~/Content/fullcalendar/dist/timegrid/main.css" rel="stylesheet">
+    <link href="~/Content/fullcalendar/dist/list/main.css" rel="stylesheet">
+    <link href="~/Content/fullcalendar/dist/calendar.css" rel="stylesheet">
+    <link href="~/Content/icons/material-design-iconic-font/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="~/Content/jquery-minicolors/jquery.minicolors.css" rel="stylesheet">
+</head>
+<body>
+    <script src="~/Content/vendor/jquery/jquery-3.4.1.min.js"></script>
+    <script src="~/Content/fullcalendar/dist/moment/moment.min.js"></script>
+    <script src="~/Content/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/sb-admin-2.min.js"></script>
+    <script src="~/Content/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/vendor/datatables/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Content/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/fullcalendar/dist/js/main.js"></script>
+    <script src="~/Content/fullcalendar/dist/daygrid/main.js"></script>
+    <script src="~/Content/fullcalendar/dist/interaction/main.js"></script>
+    <script src="~/Content/fullcalendar/dist/timegrid/main.js"></script>
+    <script src="~/Content/fullcalendar/dist/list/main.js"></script>
+    <script src="~/Content/fullcalendar/dist/js/tr.js"></script>
+    <script src="~/Content/vendor/jquery/jquery.validate.min.js"></script>
+    <script src="~/Content/vendor/jquery/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/umd/popper.min.js"></script>
+    <script src="~/Content/jquery-minicolors/jquery.minicolors.min.js"></script>
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    @RenderSection("Scripts", false)
+    <div id="wrapper">
+
+        @Html.Partial("_PartialSidebar")
+
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                @Html.Partial("_PartialHeader")
+
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+            $('.demo').each(function () {
+
+                $(this).minicolors({
+                    control: $(this).attr('data-control') || 'hue',
+                    position: $(this).attr('data-position') || 'bottom left',
+
+                    change: function (value, opacity) {
+                        if (!value) return;
+                        if (opacity) value += ', ' + opacity;
+                        if (typeof console === 'object') {
+                            console.log(value);
+                        }
+                    },
+                    theme: 'bootstrap'
+                });
+
+            });
+
+            $('#zero_config').DataTable();
+             $(function () {
+                 $('#datetimepicker1').datetimepicker({
+                     
+                     showTodayButton: true,
+                     format: 'YYYY-MM-DD HH:mm',
+                     showClose: true,
+                     showClear: true,
+                     toolbarPlacement: 'top',
+                     stepping: 15
+                });
+                $('#datetimepicker2').datetimepicker({
+                    showTodayButton: true,
+                    format: 'YYYY-MM-DD HH:mm',
+                    showClose: true,
+                    showClear: true,
+                    toolbarPlacement: 'top',
+                    stepping: 15
+                });
+        });
+
+    </script>
+    @*<script>
+    $(function () {
+    $("#katilimci").autocomplete({
+    source: '@Url.Action("GetPerson", "Takvim")'
+    });
+    });
+    </script>*@
+</body>
+</html>

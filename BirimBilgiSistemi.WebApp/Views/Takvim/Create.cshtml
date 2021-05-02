@@ -1,0 +1,72 @@
+﻿@model BirimBilgiSistemi.WebApp.Models.TakvimViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Etkinlik Ekle</h4>
+                    <div class="form-group">
+                        <hr />
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                        @* etkinlik adı *@
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.etkinlikAd, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.etkinlikAd, new { htmlAttributes = new { @class = "form-control"} })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.etkinlikAciklama, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.etkinlikAciklama, new { htmlAttributes = new { @class = "form-control"} })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.etkinlikKonum, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.etkinlikKonum, new { htmlAttributes = new { @class = "form-control"} })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.etkinlikKategori, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.DropDownList("etkinlikKategori", (IEnumerable<SelectListItem>)ViewBag.KategoriTipi, "seçiniz",htmlAttributes: new { @class= "select2 form-control custom-select select2-hidden-accessible col-md-12" })
+                               
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.baslangicTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.baslangicTarihi, new { htmlAttributes = new { @class = "form-control", @id = "datetimepicker1" } })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.bitisTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.bitisTarihi, new { htmlAttributes = new { @class = "form-control", @id = "datetimepicker2" } })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.katilimci, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.DropDownList("katilimci",null, "Seciniz", htmlAttributes: new { @class = "select2 form-control custom-select select2-hidden-accessible col-md-12"})
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-2 m-t-15">
+                                <button type="submit" class="btn btn-success">Ekle</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

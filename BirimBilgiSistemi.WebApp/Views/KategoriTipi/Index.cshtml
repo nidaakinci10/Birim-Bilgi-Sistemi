@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div class="card shadow mb-4">
+
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Kategori Tipi Tablosu</h6>
+    </div>
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Kategori Tipi</th>
+                        <th>Renk Kodu</th>
+                        <th>Delete</th>
+                        <th>Update</th>
+                    </tr>
+
+
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Kategori Tipi</th>
+                        <th>Renk Kodu</th>
+                        <th>Delete</th>
+                        <th>Update</th>
+                    </tr>
+
+                </tfoot>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable({
+            "ajax": {
+                "url": "/KategoriTipi/verisayfalama",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columns": [
+                { "data": "KategoriTipi", "name": "KategoriTipi", "autoWidth": true },
+                { "data": "RenkKodu", "name": "RenkKodu", "autoWidth": true },
+                { "data": "Delete" },
+                { "data": "Update" },
+            ],
+            "serverSide": "true",
+            "order": [0, "asc"],
+            "processing": "true",
+            "language": {
+                "processing": "Yükleniyor... Lütfen Bekleyin"
+            }
+
+        });
+    });
+</script>

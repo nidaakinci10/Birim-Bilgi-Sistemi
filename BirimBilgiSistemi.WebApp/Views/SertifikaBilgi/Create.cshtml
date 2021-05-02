@@ -1,0 +1,54 @@
+﻿@model BirimBilgiSistemi.WebApp.Models.SertifikaBilgiViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Sertifika Ekle </h4>
+                    <div class="form-group">
+                        <hr />
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                        @* sicil numarası*@
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.sertifikaAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.sertifikaAdi, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="from-group row">
+                            @Html.LabelFor(model => model.sertifikaKurum, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.sertifikaKurum, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    
+                    <div class="from-group row">
+                        @Html.LabelFor(model => model.sertifikaTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.sertifikaTarihi, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <div class="from-group row">
+                        @Html.LabelFor(model => model.sertifikaAciklama, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.sertifikaAciklama, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2 m-t-15">
+                            <button type="submit" class="btn btn-success">Ekle</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

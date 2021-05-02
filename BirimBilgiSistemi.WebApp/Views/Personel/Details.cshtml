@@ -1,0 +1,143 @@
+﻿@model BirimBilgiSistemi.Entity.Entity.personel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="form-horizontal">
+
+    <div class="card">
+
+        <div class="card-body">
+            <h4>Detaylar</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.sicilNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.sicilNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.tcKimlik)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tcKimlik)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ad)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ad)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.soyad)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.soyad)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.telefon)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.telefon)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.dahili)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dahili)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.eposta)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.eposta)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.meslegi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.meslegi)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.unvani)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.unvani)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.adres)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.adres)
+                </dd>
+                <dt>
+                    @Html.LabelFor(model => model.baskanlikId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.baskanlikId)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.mudurlukId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.mudurlukId)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.seflikId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.seflikId)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.kanGrubu)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.kanGrubu)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.yakininAdSoyadi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.yakininTelefon)
+                </dd>
+                <dt>
+                    @Html.LabelFor(model => model.kullanici_adi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.kullanici_adi)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.sifre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.sifre)
+                </dd>
+
+                <dt>
+                    @Bootstrap.LinkButton("/Personel/Update/" + Model.Id, "warning", null, "Düzenle", "tooltip-edit", "Düzenle")
+                    @Bootstrap.LinkButton("/Personel/Index", "secondary", null, "Listeye geri dön", "keyboard-backspace", "Listeye geri dön")
+                </dt>
+            </dl>
+        </div>
+    </div>
+</div>
+
+ç
